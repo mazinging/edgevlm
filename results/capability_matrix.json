@@ -1,0 +1,50 @@
+{
+  "gpu": {
+    "index": 0,
+    "name": "NVIDIA GeForce GTX 1650 Ti",
+    "total_mem_gb": 4.294639616,
+    "compute_cap": [
+      7,
+      5
+    ],
+    "multi_processor_count": 16,
+    "sm_count": 16,
+    "cuda_cores": 2048,
+    "torch_dtype_native": "float16"
+  },
+  "nvidia_smi": {
+    "name": "NVIDIA GeForce GTX 1650 Ti",
+    "driver_version": "572.83",
+    "memory_total": "4096",
+    "memory_used": "56",
+    "compute_cap": "7.5",
+    "power_draw": "4.17",
+    "power_limit": "[N/A]",
+    "temperature_gpu": "48",
+    "clocks_sm": "300",
+    "clocks_max_sm": "2100",
+    "clocks_mem": "405"
+  },
+  "python_version": "3.8.20",
+  "torch_version": "2.4.1+cu121",
+  "cuda_version": "12.1",
+  "cudnn_version": 90100,
+  "platform": "Windows-10-10.0.19045-SP0",
+  "capabilities": {
+    "cuda_available": true,
+    "bf16_tensor_core": false,
+    "int8_tensor_core": true,
+    "int4_tensor_core": false,
+    "fp8_support": false,
+    "tf32_support": false,
+    "flash_attention_2": false,
+    "sdpa": true
+  },
+  "implications": [
+    "GPU NVIDIA GeForce GTX 1650 Ti, SM 7.5, 16 SMs, 4.3 GB",
+    "[关键] SM7.5 无 BF16 Tensor Core（Ampere+ 才有）。模型原生 bf16，预期 FP16 快于 BF16 —— 必须实测验证。",
+    "[关键] 有 INT8 TC 但无 INT4 TC。W8A8 预期有加速；W4A16 缺少 TC 支撑，反量化开销可能吃掉收益 —— 需实测，该结论应转化为「INT4 应留给 Orin(Ampere)」的部署建议。",
+    "无 TF32（Ampere+ 才有），FP32 路径无此加速。",
+    "未安装 flash-attn，Attention 使用 SDPA/eager 路径。SM7.5 对 FA2 支持有限，本项目的 attention 优化走 SDPA + 手工实现。"
+  ]
+}

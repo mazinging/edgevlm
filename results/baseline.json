@@ -1,0 +1,150 @@
+{
+  "capability_matrix": {
+    "gpu": {
+      "index": 0,
+      "name": "NVIDIA GeForce GTX 1650 Ti",
+      "total_mem_gb": 4.294639616,
+      "compute_cap": [
+        7,
+        5
+      ],
+      "multi_processor_count": 16,
+      "sm_count": 16,
+      "cuda_cores": 2048,
+      "torch_dtype_native": "float16"
+    },
+    "nvidia_smi": {
+      "name": "NVIDIA GeForce GTX 1650 Ti",
+      "driver_version": "572.83",
+      "memory_total": "4096",
+      "memory_used": "156",
+      "compute_cap": "7.5",
+      "power_draw": "49.43",
+      "power_limit": "[N/A]",
+      "temperature_gpu": "69",
+      "clocks_sm": "1680",
+      "clocks_max_sm": "2100",
+      "clocks_mem": "6000"
+    },
+    "python_version": "3.8.20",
+    "torch_version": "2.4.1+cu121",
+    "cuda_version": "12.1",
+    "cudnn_version": 90100,
+    "platform": "Windows-10-10.0.19045-SP0",
+    "capabilities": {
+      "cuda_available": true,
+      "bf16_tensor_core": false,
+      "int8_tensor_core": true,
+      "int4_tensor_core": false,
+      "fp8_support": false,
+      "tf32_support": false,
+      "flash_attention_2": false,
+      "sdpa": true
+    },
+    "implications": [
+      "GPU NVIDIA GeForce GTX 1650 Ti, SM 7.5, 16 SMs, 4.3 GB",
+      "[关键] SM7.5 无 BF16 Tensor Core（Ampere+ 才有）。模型原生 bf16，预期 FP16 快于 BF16 —— 必须实测验证。",
+      "[关键] 有 INT8 TC 但无 INT4 TC。W8A8 预期有加速；W4A16 缺少 TC 支撑，反量化开销可能吃掉收益 —— 需实测，该结论应转化为「INT4 应留给 Orin(Ampere)」的部署建议。",
+      "无 TF32（Ampere+ 才有），FP32 路径无此加速。",
+      "未安装 flash-attn，Attention 使用 SDPA/eager 路径。SM7.5 对 FA2 支持有限，本项目的 attention 优化走 SDPA + 手工实现。"
+    ]
+  },
+  "results": [
+    {
+      "model": "smolvlm-256m",
+      "dtype": "fp32",
+      "attn": "eager",
+      "device": "cuda",
+      "n_tiles": 1,
+      "tile_hw": 512,
+      "vision_ms": 140.4209000000011,
+      "connector_ms": 1.3515666666658415,
+      "visual_tokens": 64,
+      "prefill_in_tokens": 79,
+      "prefill_ms": 253.2008999999995,
+      "lm_prefill_ms": 47.696733333333206,
+      "e2e_ms": 1291.200400000001,
+      "out_tokens": 24,
+      "tok_per_s": 18.587354836631075,
+      "decode_ms_per_tok": 37.39910833333335,
+      "text": " The image depicts a grid of squares arranged in a grid pattern. The squares are filled with a mixture of colors, includ",
+      "peak_gb": 1.217797632,
+      "params_m": 256.484928,
+      "supported": true
+    },
+    {
+      "model": "smolvlm-256m",
+      "dtype": "fp32",
+      "attn": "sdpa",
+      "device": "cuda",
+      "error": "ValueError: Idefics3VisionTransformer does not support an attention implementation through torch.nn.functional.s",
+      "supported": false
+    },
+    {
+      "model": "smolvlm-256m",
+      "dtype": "fp16",
+      "attn": "eager",
+      "device": "cuda",
+      "n_tiles": 1,
+      "tile_hw": 512,
+      "vision_ms": 527.0920333333346,
+      "connector_ms": 4.939899999998924,
+      "visual_tokens": 64,
+      "prefill_in_tokens": 79,
+      "prefill_ms": 638.6475333333337,
+      "lm_prefill_ms": 84.38693333333447,
+      "e2e_ms": 1879.327400000001,
+      "out_tokens": 24,
+      "tok_per_s": 12.770526306379605,
+      "decode_ms_per_tok": 29.732826388888856,
+      "text": " The image depicts a grid of squares arranged in a grid pattern. The squares are filled with a mixture of colors, includ",
+      "peak_gb": 0.66671104,
+      "params_m": 256.484928,
+      "supported": true
+    },
+    {
+      "model": "smolvlm-256m",
+      "dtype": "fp16",
+      "attn": "sdpa",
+      "device": "cuda",
+      "error": "ValueError: Idefics3VisionTransformer does not support an attention implementation through torch.nn.functional.s",
+      "supported": false
+    },
+    {
+      "model": "smolvlm-256m",
+      "dtype": "bf16",
+      "attn": "eager",
+      "device": "cuda",
+      "n_tiles": 1,
+      "tile_hw": 512,
+      "vision_ms": 155.62896666666623,
+      "connector_ms": 1.8856666666664523,
+      "visual_tokens": 64,
+      "prefill_in_tokens": 79,
+      "prefill_ms": 213.11906666666638,
+      "lm_prefill_ms": 50.5170666666667,
+      "e2e_ms": 1587.0352000000025,
+      "out_tokens": 24,
+      "tok_per_s": 15.122537924804668,
+      "decode_ms_per_tok": 50.76196527777791,
+      "text": " The image depicts a grid-like pattern with a pattern of blue, green, and yellow. The grid is made up",
+      "peak_gb": 0.691876864,
+      "params_m": 256.484928,
+      "supported": true
+    },
+    {
+      "model": "smolvlm-256m",
+      "dtype": "bf16",
+      "attn": "sdpa",
+      "device": "cuda",
+      "error": "ValueError: Idefics3VisionTransformer does not support an attention implementation through torch.nn.functional.s",
+      "supported": false
+    }
+  ],
+  "config": {
+    "model": "smolvlm-256m",
+    "device": "cuda",
+    "max_new_tokens": 24,
+    "image_size": 512
+  }
+}

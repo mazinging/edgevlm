@@ -1,0 +1,15 @@
+﻿# Python
+__pycache__/
+*.pyc
+.venv/
+
+# 可重新下载的缓存与临时文件
+.cache/
+.tmp/
+
+# 可重新生成的模型产物（过大，不进 Git）
+artifacts/
+
+# 密钥保险（防止以后不小心写进来）
+.env
+*.key

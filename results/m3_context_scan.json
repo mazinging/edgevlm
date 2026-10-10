@@ -1,0 +1,80 @@
+{
+  "config": {
+    "model": "smolvlm-256m",
+    "device": "cuda",
+    "image_size": 512,
+    "max_new_tokens": 16
+  },
+  "text_config": {
+    "layers": 30,
+    "kv_heads": 3,
+    "q_heads": 9,
+    "head_dim": 64
+  },
+  "results": [
+    {
+      "n_images": 1,
+      "image_size": 512,
+      "n_tiles": 1,
+      "seq_len": 79,
+      "kv_mb": 3.64032,
+      "kv_bytes_per_token": 46080,
+      "prefill_ms": 189.80320000000006,
+      "prefill_peak_gb": 1.191603712,
+      "e2e_ms": 901.4138000000003,
+      "e2e_peak_gb": 1.210485248,
+      "out_tokens": 16,
+      "decode_ms_per_tok": 44.47566250000001,
+      "tok_per_s": 17.74989466546884,
+      "supported": true
+    },
+    {
+      "n_images": 2,
+      "image_size": 512,
+      "n_tiles": 2,
+      "seq_len": 146,
+      "kv_mb": 6.72768,
+      "kv_bytes_per_token": 46080,
+      "prefill_ms": 360.8584999999991,
+      "prefill_peak_gb": 1.340505088,
+      "e2e_ms": 1093.5784999999996,
+      "e2e_peak_gb": 1.35693824,
+      "out_tokens": 16,
+      "decode_ms_per_tok": 45.79500000000003,
+      "tok_per_s": 14.630865548289407,
+      "supported": true
+    },
+    {
+      "n_images": 4,
+      "image_size": 512,
+      "n_tiles": 4,
+      "seq_len": 280,
+      "kv_mb": 12.9024,
+      "kv_bytes_per_token": 46080,
+      "prefill_ms": 677.7030000000011,
+      "prefill_peak_gb": 1.617873408,
+      "e2e_ms": 1414.2419000000004,
+      "e2e_peak_gb": 1.65018624,
+      "out_tokens": 16,
+      "decode_ms_per_tok": 46.03368124999996,
+      "tok_per_s": 11.313481802512,
+      "supported": true
+    },
+    {
+      "n_images": 8,
+      "image_size": 512,
+      "n_tiles": 8,
+      "seq_len": 548,
+      "kv_mb": 25.25184,
+      "kv_bytes_per_token": 46080,
+      "prefill_ms": 1359.4886999999999,
+      "prefill_peak_gb": 2.172093952,
+      "e2e_ms": 2062.8947999999987,
+      "e2e_peak_gb": 2.237877248,
+      "out_tokens": 16,
+      "decode_ms_per_tok": 43.962881249999924,
+      "tok_per_s": 7.756091100719247,
+      "supported": true
+    }
+  ]
+}

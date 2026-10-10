@@ -1,0 +1,154 @@
+{
+  "providers_available": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "exports": [
+    {
+      "module": "vision_encoder",
+      "path": "E:\\VLM project\\artifacts\\onnx\\vision.onnx",
+      "input_shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "ok": true,
+      "size_mb": 345.894427,
+      "num_nodes": 692,
+      "op_types": {
+        "Constant": 143,
+        "Conv": 1,
+        "Shape": 9,
+        "Slice": 2,
+        "Concat": 6,
+        "Reshape": 52,
+        "Transpose": 49,
+        "Split": 1,
+        "Squeeze": 1,
+        "Gather": 3,
+        "Cast": 35,
+        "ReduceSum": 4,
+        "Reciprocal": 2,
+        "Range": 2,
+        "ConstantOfShape": 4,
+        "Mul": 89,
+        "Equal": 4,
+        "Where": 4,
+        "Expand": 4,
+        "Less": 2,
+        "Not": 2,
+        "Unsqueeze": 3,
+        "Add": 123,
+        "NonZero": 1,
+        "ScatterND": 1,
+        "LayerNormalization": 25,
+        "MatMul": 96,
+        "Softmax": 12,
+        "Tanh": 12
+      },
+      "num_initializers": 197
+    },
+    {
+      "module": "connector",
+      "path": "E:\\VLM project\\artifacts\\onnx\\connector.onnx",
+      "input_shape": [
+        1,
+        1024,
+        768
+      ],
+      "ok": true,
+      "size_mb": 28.313067,
+      "num_nodes": 11,
+      "op_types": {
+        "Constant": 4,
+        "Reshape": 4,
+        "Transpose": 2,
+        "MatMul": 1
+      },
+      "num_initializers": 1
+    },
+    {
+      "module": "text_prefill",
+      "path": "E:\\VLM project\\artifacts\\onnx\\text_prefill.onnx",
+      "input_shape": [
+        1,
+        79,
+        576
+      ],
+      "ok": true,
+      "size_mb": 539.07695,
+      "num_nodes": 3541,
+      "op_types": {
+        "Constant": 1254,
+        "Trilu": 1,
+        "Mul": 367,
+        "Unsqueeze": 64,
+        "ConstantOfShape": 62,
+        "Equal": 62,
+        "Where": 62,
+        "Expand": 62,
+        "Cast": 185,
+        "MatMul": 272,
+        "Transpose": 151,
+        "Concat": 61,
+        "Cos": 1,
+        "Sin": 1,
+        "Pow": 61,
+        "ReduceMean": 61,
+        "Add": 211,
+        "Sqrt": 61,
+        "Div": 91,
+        "Reshape": 180,
+        "Slice": 151,
+        "Neg": 60,
+        "Softmax": 30,
+        "Sigmoid": 30
+      },
+      "num_initializers": 272
+    }
+  ],
+  "comparisons": [
+    {
+      "module": "vision_encoder",
+      "torch_ms": 139.15197999999975,
+      "ort_cpu_ms": 939.3750699999998,
+      "ort_cpu_rel_err": 7.08268584591421e-06,
+      "ort_cpu_max_err": 0.0005321502685546875
+    },
+    {
+      "module": "text_prefill",
+      "torch_ms": 48.19247999999874,
+      "ort_cpu_ms": 86.01286000000101,
+      "ort_cpu_rel_err": 2.165533668306934e-06,
+      "ort_cpu_max_err": 4.6372413635253906e-05,
+      "logits_argmax_match": true
+    },
+    {
+      "module": "connector",
+      "note": "见 exports"
+    }
+  ],
+  "optimization_levels": [
+    {
+      "level": "ORT_DISABLE_ALL",
+      "ms": 1024.68583,
+      "rel_err": 7.4557301847119065e-06
+    },
+    {
+      "level": "ORT_ENABLE_BASIC",
+      "ms": 1031.5950999999998,
+      "rel_err": 7.4557301847119065e-06
+    },
+    {
+      "level": "ORT_ENABLE_EXTENDED",
+      "ms": 914.8488799999996,
+      "rel_err": 7.4557301847119065e-06
+    },
+    {
+      "level": "ORT_ENABLE_ALL",
+      "ms": 1018.7982100000013,
+      "rel_err": 7.401938748237195e-06
+    }
+  ]
+}

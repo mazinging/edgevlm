@@ -1,0 +1,140 @@
+{
+  "config": {
+    "model": "smolvlm-256m",
+    "device": "cuda",
+    "max_new_tokens": 16
+  },
+  "results": {
+    "eager": {
+      "latency_s": 1.508261000000001,
+      "tok_per_s": 10.60824353344679,
+      "out_tokens": 16,
+      "min_s": 1.4903927999999986,
+      "max_s": 1.5153311999999985
+    },
+    "kernel_profile": {
+      "num_events": 104,
+      "total_cuda_us": 1873556,
+      "top_kernels": [
+        {
+          "name": "aten::matmul",
+          "calls": 2201,
+          "cuda_us": 195873,
+          "pct": 10.45
+        },
+        {
+          "name": "aten::as_strided",
+          "calls": 9433,
+          "cuda_us": 148648,
+          "pct": 7.93
+        },
+        {
+          "name": "aten::mm",
+          "calls": 1689,
+          "cuda_us": 145014,
+          "pct": 7.74
+        },
+        {
+          "name": "aten::mul",
+          "calls": 2223,
+          "cuda_us": 132941,
+          "pct": 7.1
+        },
+        {
+          "name": "aten::reshape",
+          "calls": 3549,
+          "cuda_us": 125621,
+          "pct": 6.7
+        },
+        {
+          "name": "aten::slice",
+          "calls": 3793,
+          "cuda_us": 116509,
+          "pct": 6.22
+        },
+        {
+          "name": "aten::transpose",
+          "calls": 3033,
+          "cuda_us": 99869,
+          "pct": 5.33
+        },
+        {
+          "name": "aten::addmm",
+          "calls": 72,
+          "cuda_us": 85178,
+          "pct": 4.55
+        },
+        {
+          "name": "aten::add",
+          "calls": 1738,
+          "cuda_us": 77748,
+          "pct": 4.15
+        },
+        {
+          "name": "aten::linear",
+          "calls": 1761,
+          "cuda_us": 69720,
+          "pct": 3.72
+        },
+        {
+          "name": "aten::bmm",
+          "calls": 512,
+          "cuda_us": 62717,
+          "pct": 3.35
+        },
+        {
+          "name": "aten::view",
+          "calls": 3662,
+          "cuda_us": 62046,
+          "pct": 3.31
+        }
+      ],
+      "supported": true
+    },
+    "torch_compile": {
+      "latency_s": 1.5848207999999957,
+      "tok_per_s": 10.095778652072237,
+      "out_tokens": 16,
+      "min_s": 1.5587671999999984,
+      "max_s": 1.5901678999999973
+    },
+    "batched": [
+      {
+        "latency_s": 1.5460251000000014,
+        "tok_per_s": 10.349120463826871,
+        "out_tokens": 16,
+        "min_s": 1.536831399999997,
+        "max_s": 1.5460251000000014,
+        "batch": 1,
+        "total_tok_per_s": 10.349120463826871
+      },
+      {
+        "latency_s": 1.7607032000000018,
+        "tok_per_s": 9.087278310166065,
+        "out_tokens": 16,
+        "min_s": 1.6767640999999998,
+        "max_s": 1.7607032000000018,
+        "batch": 2,
+        "total_tok_per_s": 18.17455662033213
+      },
+      {
+        "latency_s": 2.1123751000000013,
+        "tok_per_s": 7.574412328567966,
+        "out_tokens": 16,
+        "min_s": 2.0651566000000017,
+        "max_s": 2.1123751000000013,
+        "batch": 4,
+        "total_tok_per_s": 30.297649314271865
+      },
+      {
+        "latency_s": 2.7052554999999927,
+        "tok_per_s": 5.9144136293226435,
+        "out_tokens": 16,
+        "min_s": 2.6683572999999967,
+        "max_s": 2.7052554999999927,
+        "batch": 8,
+        "total_tok_per_s": 47.31530903458115
+      }
+    ]
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "config": {
+    "model": "smolvlm-256m",
+    "device": "cuda",
+    "max_new_tokens": 24,
+    "image_size": 512
+  },
+  "reference_text": " The image depicts a grid of squares arranged in a grid pattern. The squares are filled with a mixture of colors, including",
+  "results": [
+    {
+      "config": "fp32 (baseline)",
+      "scheme": null,
+      "scope": null,
+      "params_m": 256.484928,
+      "weight_bytes_fp": 1025943680,
+      "latency_s": 1.2727439999999994,
+      "latency_min_s": 1.2374576000000026,
+      "latency_max_s": 1.2742815999999983,
+      "out_tokens": 24,
+      "tok_per_s": 18.856895023665412,
+      "peak_gb": 1.191608832,
+      "text": " The image depicts a grid of squares arranged in a grid pattern. The squares are filled with a mixture of colors, including",
+      "supported": true
+    },
+    {
+      "config": "W8A8 / text",
+      "scheme": "w8a8",
+      "scope": "text",
+      "params_m": 256.484928,
+      "weight_bytes_fp": 1025943680,
+      "quant_info": {
+        "scheme": "w8a8",
+        "scope": "text",
+        "modules": {
+          "model.text_model": {
+            "replaced": 150,
+            "skipped": 60
+          }
+        },
+        "total_replaced": 150,
+        "total_skipped": 60
+      },
+      "weight_bytes_quant": 727921280,
+      "weight_compress": 1.4094156994558533,
+      "latency_s": 2.489364099999996,
+      "latency_min_s": 2.478775600000006,
+      "latency_max_s": 2.5138756000000058,
+      "out_tokens": 24,
+      "tok_per_s": 9.641016354337253,
+      "peak_gb": 0.868279808,
+      "text": " The image depicts a grid-like pattern with a pattern of blue, green, and yellow squares. The squares are arranged",
+      "text_match": false,
+      "text_prefix_match": false,
+      "supported": true
+    },
+    {
+      "config": "W8A8 / text+vision",
+      "scheme": "w8a8",
+      "scope": "all_no_lmhead",
+      "params_m": 256.484928,
+      "weight_bytes_fp": 1025943680,
+      "quant_info": {
+        "modules": {
+          "model.text_model": {
+            "replaced": 150,
+            "skipped": 60
+          },
+          "model.vision_model": {
+            "replaced": 72,
+            "skipped": 0
+          }
+        },
+        "total_replaced": 222
+      },
+      "weight_bytes_quant": 473449088,
+      "weight_compress": 2.1669567140448267,
+      "latency_s": 2.579847600000001,
+      "latency_min_s": 2.507791499999996,
+      "latency_max_s": 2.619062800000002,
+      "out_tokens": 24,
+      "tok_per_s": 9.302875100064048,
+      "peak_gb": 0.613283328,
+      "text": " The image depicts a grid-like pattern with a pattern of alternating colors. The grid is composed of squares, each square",
+      "text_match": false,
+      "text_prefix_match": false,
+      "supported": true
+    },
+    {
+      "config": "W8A8 / all",
+      "scheme": "w8a8",
+      "scope": "all",
+      "params_m": 256.484928,
+      "weight_bytes_fp": 1025943680,
+      "quant_info": {
+        "scheme": "w8a8",
+        "scope": "all",
+        "modules": {
+          "model.text_model": {
+            "replaced": 150,
+            "skipped": 60
+          },
+          "model.vision_model": {
+            "replaced": 72,
+            "skipped": 0
+          },
+          "model.connector": {
+            "replaced": 1,
+            "skipped": 0
+          },
+          "lm_head": {
+            "replaced": 0,
+            "skipped": 0
+          }
+        },
+        "total_replaced": 223,
+        "total_skipped": 60
+      },
+      "weight_bytes_quant": 452217728,
+      "weight_compress": 2.268694074726765,
+      "latency_s": 2.5686563999999947,
+      "latency_min_s": 2.5497548000000023,
+      "latency_max_s": 2.5776254999999964,
+      "out_tokens": 24,
+      "tok_per_s": 9.343406148054699,
+      "peak_gb": 0.591527936,
+      "text": " The image depicts a grid-like pattern with a pattern of small squares arranged in a grid. The grid is composed of",
+      "text_match": false,
+      "text_prefix_match": false,
+      "supported": true
+    },
+    {
+      "config": "W4A16 / text",
+      "scheme": "w4a16",
+      "scope": "text",
+      "params_m": 256.484928,
+      "weight_bytes_fp": 1025943680,
+      "quant_info": {
+        "scheme": "w4a16",
+        "scope": "text",
+        "modules": {
+          "model.text_model": {
+            "replaced": 150,
+            "skipped": 60
+          }
+        },
+        "total_replaced": 150,
+        "total_skipped": 60
+      },
+      "weight_bytes_quant": 684997760,
+      "weight_compress": 1.497732897695899,
+      "latency_s": 2.4420417000000043,
+      "latency_min_s": 2.3468301999999994,
+      "latency_max_s": 2.4656882000000024,
+      "out_tokens": 24,
+      "tok_per_s": 9.827842006137717,
+      "peak_gb": 0.825348608,
+      "text": " The image is a 3D rendering of a scene with a variety of elements. The background is a light blue color",
+      "text_match": false,
+      "text_prefix_match": false,
+      "supported": true
+    },
+    {
+      "config": "W8A16 / text",
+      "scheme": "w8a16",
+      "scope": "text",
+      "params_m": 256.484928,
+      "weight_bytes_fp": 1025943680,
+      "quant_info": {
+        "scheme": "w8a16",
+        "scope": "text",
+        "modules": {
+          "model.text_model": {
+            "replaced": 150,
+            "skipped": 60
+          }
+        },
+        "total_replaced": 150,
+        "total_skipped": 60
+      },
+      "weight_bytes_quant": 727921280,
+      "weight_compress": 1.4094156994558533,
+      "latency_s": 1.5292173999999932,
+      "latency_min_s": 1.4951958999999988,
+      "latency_max_s": 1.5731357000000088,
+      "out_tokens": 24,
+      "tok_per_s": 15.694302196666156,
+      "peak_gb": 0.868279808,
+      "text": " The image depicts a grid of squares arranged in a grid pattern. The squares are filled with a mixture of colors, including",
+      "text_match": true,
+      "text_prefix_match": true,
+      "supported": true
+    }
+  ]
+}
